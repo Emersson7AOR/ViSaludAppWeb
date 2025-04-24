@@ -1,0 +1,79 @@
+<div class="visualizador-container">
+  <!-- Header with back button and title -->
+  <mat-card class="header-section">
+    <button mat-icon-button color="primary" class="back-button">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h2 class="header-title">Visualizador</h2>
+  </mat-card>
+
+  <div class="frequent-actions-container">
+    <mat-card class="frequent-action-card">
+        <mat-card-content class="action-content">
+            <div class="contenedor-imagen">
+              <img src="https://plus.unsplash.com/premium_photo-1661341423936-40b48564a5bf?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" >
+            </div>
+            <div>
+                <p class="action-title">Alicia Fernanda Herrera Luna</p>
+                <p class="action-label">Edad: 28 años</p>
+            </div>
+        </mat-card-content>
+    </mat-card>
+   
+    <mat-card class="frequent-action-card">
+        <mat-card-content class="action-content">
+            <div class="action-icon-circle">
+              <mat-icon class="action-icon">description</mat-icon>
+            </div>
+            <div>
+                <p class="action-title">Estudio realizado</p>
+                <p class="action-label">Mastografía</p>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    
+    <!-- Actions card with dropdown functionality -->
+    <mat-card class="frequent-action-card cursor" (click)="toggleActionsMenu()">
+      <mat-card-content class="action-content">
+          <div class="action-icon-circle">
+            <mat-icon class="action-icon">more_horiz</mat-icon>
+          </div>
+          <div>
+              <p class="action-title">Acciones</p>
+              <p class="action-label">Seleccionar</p>
+          </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Actions menu overlay -->
+  <div class="actions-menu-overlay" *ngIf="showActionsMenu">
+    <div class="actions-menu-container">
+      <div class="actions-menu-header">
+        <h3>Selecciona una acción</h3>
+        <button mat-icon-button (click)="toggleActionsMenu()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <div class="actions-menu-items">
+        <div class="action-menu-item cursor" *ngFor="let action of actions" (click)="onActionSelect(action)">
+          <div class="action-icon-circle-small">
+            <mat-icon class="action-icon">{{action.icon}}</mat-icon>
+          </div>
+          <span>{{action.viewValue}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Main content area -->
+  <div class="content-container">
+    <!-- Main content with DICOM viewer -->
+    <div class="viewer-container">
+      <!-- DICOM Viewer component -->
+      <div class="dicom-viewer-wrapper">
+        <app-modulo-visualizador></app-modulo-visualizador>
+      </div>
+    </div>
+  </div>
+</div>

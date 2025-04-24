@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Descargar imagen</h2>
+<mat-dialog-content>
+  <p>Selecciona el formato de descarga:</p>
+  
+  <mat-radio-group [(ngModel)]="selectedFormat" class="format-radio-group">
+    <mat-radio-button *ngFor="let format of formats" [value]="format.value" class="format-radio-button">
+      <div class="format-option">
+        <span class="format-label">{{ format.label }}</span>
+        <span class="format-description">{{ format.description }}</span>
+      </div>
+    </mat-radio-button>
+  </mat-radio-group>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="onDownload()">Descargar</button>
+</mat-dialog-actions>

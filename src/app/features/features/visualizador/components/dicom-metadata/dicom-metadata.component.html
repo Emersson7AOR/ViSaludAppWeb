@@ -1,0 +1,42 @@
+<div class="metadata-container">
+  <h3>Metadatos DICOM</h3>
+  
+  <div class="metadata-search">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Buscar tags</mat-label>
+      <input matInput type="text" [(ngModel)]="tagSearchText" placeholder="Buscar...">
+      <button *ngIf="tagSearchText" matSuffix mat-icon-button aria-label="Clear" (click)="tagSearchText=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="category-field">
+      <mat-label>Categoría</mat-label>
+      <mat-select [(ngModel)]="selectedCategory">
+        <mat-option *ngFor="let category of tagCategories" [value]="category">
+          {{ category }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  
+  <mat-accordion>
+    <!-- Adjust the pipe usage to match the expected arguments -->
+    <ng-container *ngFor="let group of (metadata | filterTags:tagSearchText | groupBy:'category')">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ group.key }} ({{ group.value.length }})
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        
+        <div class="tag-list">
+          <div *ngFor="let tag of group.value" class="tag-item">
+            <div class="tag-header">{{ tag.tag }} - {{ getTagDescription(tag.tag) }}</div>
+            <div class="tag-value">{{ tag.value }}</div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </ng-container>
+  </mat-accordion>
+</div>

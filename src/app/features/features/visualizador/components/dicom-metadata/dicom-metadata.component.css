@@ -1,0 +1,38 @@
+.metadata-container {
+  margin-top: 20px;
+}
+
+.metadata-search {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.search-field {
+  flex: 3;
+}
+
+.category-field {
+  flex: 1;
+}
+
+.tag-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.tag-item {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.tag-header {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.tag-value {
+  font-family: monospace;
+  word-break: break-all;
+}

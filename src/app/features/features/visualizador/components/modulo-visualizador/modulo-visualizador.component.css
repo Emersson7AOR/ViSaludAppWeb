@@ -1,0 +1,174 @@
+.visualizador-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  height: calc(100vh - 32px); /* Altura completa menos el padding */
+  width: calc(100% - 32px); /* Ancho completo menos el padding */
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Estilos para la tarjeta principal */
+.main-card {
+  margin-bottom: 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.main-card mat-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Estilos para el contenedor del visor */
+.viewer-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Estilos para la tarjeta de imagen */
+.image-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 6px;
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  min-height: 0; /* Importante para que flex funcione correctamente */
+  background-color: #f9f9f9;
+  overflow: hidden;
+}
+
+/* Estilos para el uploader container */
+.uploader-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Ajuste para el tab group */
+mat-tab-group {
+  max-height: 30vh; /* Limitar altura para que no ocupe demasiado espacio */
+}
+
+/* Estilos para la tarjeta de herramientas */
+.tools-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  background-color: #f9f9f9 !important;
+  margin-bottom: 6px;
+}
+
+.tools-header {
+  display: flex;
+  align-items: center;
+  padding: 8px 8px;
+}
+
+.tools-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #0066cc;
+  margin-right: auto;
+}
+
+.tools-buttons {
+  display: flex;
+  gap: 12px;
+  padding: 8px 16px;
+}
+
+/* Estilos para los botones de herramientas */
+.mat-mdc-icon-button.active-tool {
+  background-color: #e3f2fd !important;
+  color: #0066cc !important;
+  border: 1px solid #2196f3 !important;
+}
+
+/* Estilos para la tarjeta de imagen */
+.image-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 6px;
+  display: flex;
+  justify-content: center;
+  min-height: 600px;
+  background-color: #f9f9f9;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.dicom-image {
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Estilos para la zona de arrastrar y soltar */
+.drop-zone {
+  border: 2px dashed #ccc;
+  border-radius: 4px;
+  text-align: center;
+  padding: 5px;
+  transition: background-color 0.2s ease;
+}
+
+.drop-zone-hover {
+  background-color: #e3f2fd;
+  border-color: #2196f3;
+}
+
+/* Estilos para el contenedor de entrada de archivos */
+.file-input-container {
+  margin: 16px 0;
+}
+
+/* Estilos para el visor DICOM */
+.dicom-viewer {
+  width: 100%;
+  height: 600px;
+  background-color: black;
+}
+
+/* Estilos para la tarjeta de metadatos */
+.metadata-card {
+  margin-top: 6px;
+}
+
+.metadata-item {
+  padding: 8px 0;
+}
+
+/* Estilos para los tabs de Material */
+.mat-mdc-tab-group {
+  margin-top: 6px;
+}
+
+/* Estilos para el título de la tarjeta principal */
+.mat-mdc-card-title {
+  color: #0066cc;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+/* Estilos para el contenido de la tarjeta */
+.mat-mdc-card-content {
+  padding: 16px;
+}

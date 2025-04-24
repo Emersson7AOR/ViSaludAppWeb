@@ -1,0 +1,136 @@
+<div class="dicom-tools-container">
+  <mat-card>
+    <mat-card-content>
+      <div class="tools-grid">
+        <!-- Zoom Tool -->
+        <button mat-icon-button 
+                [color]="activeTools.zoom ? 'primary' : ''" 
+                [class.active-tool]="activeTools.zoom"
+                (click)="toggleZoom()" 
+                [disabled]="!imageLoaded"
+                matTooltip="Zoom">
+          <mat-icon>zoom_in</mat-icon>
+        </button>
+        
+        <!-- Pan Tool -->
+        <button mat-icon-button 
+                [color]="activeTools.pan ? 'primary' : ''" 
+                [class.active-tool]="activeTools.pan"
+                (click)="togglePan()" 
+                [disabled]="!imageLoaded"
+                matTooltip="Desplazar">
+          <mat-icon>pan_tool</mat-icon>
+        </button>
+        
+        <!-- Window/Level Tool -->
+        <button mat-icon-button 
+                [color]="activeTools.windowLevel ? 'primary' : ''" 
+                [class.active-tool]="activeTools.windowLevel"
+                (click)="toggleWindowLevel()" 
+                [disabled]="!imageLoaded"
+                matTooltip="Brillo/Contraste">
+          <mat-icon>contrast</mat-icon>
+        </button>
+        
+        <!-- Measurement Tools with submenu -->
+        <div class="measure-tool-container">
+          <!-- Main measurement button -->
+          <button mat-icon-button 
+                  class="measure-main-button"
+                  [color]="activeTools.measure || activeTools.measureEllipse || activeTools.measureRectangle || activeTools.measureCircle ? 'primary' : ''" 
+                  [class.active-tool]="activeTools.measure || activeTools.measureEllipse || activeTools.measureRectangle || activeTools.measureCircle"
+                  [matMenuTriggerFor]="measureMenu" 
+                  [disabled]="!imageLoaded"
+                  matTooltip="Opciones de medición">
+            <mat-icon>straighten</mat-icon>
+          </button>
+          
+          <!-- Quick toggle arrow button -->
+          <button mat-icon-button 
+                  class="measure-toggle-button"
+                  [color]="activeTools.measure ? 'primary' : ''" 
+                  [class.active-tool]="activeTools.measure"
+                  (click)="toggleMeasure()" 
+                  [disabled]="!imageLoaded"
+                  matTooltip="Activar/Desactivar regla">
+            <mat-icon>arrow_drop_down</mat-icon>
+          </button>
+        </div>
+        
+        <mat-menu #measureMenu="matMenu">
+          <button mat-menu-item (click)="requestLengthMeasure()">
+            <mat-icon>linear_scale</mat-icon>
+            <span>Línea</span>
+          </button>
+          <button mat-menu-item (click)="requestEllipseMeasure()">
+            <mat-icon>panorama_fish_eye</mat-icon>
+            <span>Elipse</span>
+          </button>
+          <button mat-menu-item (click)="requestRectangleMeasure()">
+            <mat-icon>crop_square</mat-icon>
+            <span>Rectángulo</span>
+          </button>
+          <button mat-menu-item (click)="requestCircleMeasure()">
+            <mat-icon>radio_button_unchecked</mat-icon>
+            <span>Círculo</span>
+          </button>
+          <button mat-menu-item (click)="requestSquareMeasure()">
+            <mat-icon>crop_din</mat-icon>
+            <span>Cuadrado</span>
+          </button>
+          <mat-divider></mat-divider>
+          <button mat-menu-item (click)="requestClearMeasurements()">
+            <mat-icon>delete_sweep</mat-icon>
+            <span>Borrar mediciones</span>
+          </button>
+        </mat-menu>
+        
+        <!-- Orientation Tools with submenu -->
+        <button mat-icon-button 
+                [color]="activeTools.orientation ? 'primary' : ''" 
+                [class.active-tool]="activeTools.orientation"
+                [matMenuTriggerFor]="orientationMenu" 
+                [disabled]="!imageLoaded"
+                matTooltip="Orientación">
+          <mat-icon>rotate_90_degrees_ccw</mat-icon>
+        </button>
+        <mat-menu #orientationMenu="matMenu">
+          <button mat-menu-item (click)="rotateLeftRequested.emit()">
+            <mat-icon>rotate_left</mat-icon>
+            <span>Rotar izquierda</span>
+          </button>
+          <button mat-menu-item (click)="rotateRightRequested.emit()">
+            <mat-icon>rotate_right</mat-icon>
+            <span>Rotar derecha</span>
+          </button>
+          <button mat-menu-item (click)="flipHorizontalRequested.emit()">
+            <mat-icon>flip</mat-icon>
+            <span>Voltear horizontal</span>
+          </button>
+          <button mat-menu-item (click)="flipVerticalRequested.emit()">
+            <mat-icon>flip</mat-icon>
+            <span>Voltear vertical</span>
+          </button>
+        </mat-menu>
+        
+        <!-- Reset Tool -->
+        <button mat-icon-button 
+                (click)="resetZoom()" 
+                [disabled]="!imageLoaded"
+                matTooltip="Restablecer vista">
+          <mat-icon>refresh</mat-icon>
+        </button>
+        
+        <!-- Download Tool -->
+        <button mat-icon-button 
+                [color]="activeTools.download ? 'primary' : ''" 
+                [class.active-tool]="activeTools.download"
+                (click)="requestDownload()" 
+                [disabled]="!imageLoaded"
+                matTooltip="Descargar imagen">
+          <mat-icon>download</mat-icon>
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

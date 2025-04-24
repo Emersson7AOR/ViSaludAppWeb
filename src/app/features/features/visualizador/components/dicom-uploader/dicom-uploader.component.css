@@ -1,0 +1,59 @@
+.uploader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+}
+
+.drop-zone {
+  border: 2px dashed #979797;
+  border-radius: 8px;
+  padding: 0;
+  text-align: center;
+  transition: all 0.3s ease;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+}
+
+.drop-zone-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+}
+
+.drop-zone-hover {
+  border-color: #007bff;
+  background-color: rgba(0, 123, 255, 0.1);
+  transform: scale(1.02);
+}
+
+.file-input-container {
+  margin: 20px 0;
+}
+
+.upload-icon {
+  font-size: 48px;
+  height: 48px;
+  width: 48px;
+  color: #007bff;
+  margin-bottom: 16px;
+}
+
+mat-card-title {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+mat-error {
+  margin-top: 16px;
+}

@@ -1,0 +1,49 @@
+<div class="visualizador-container">
+  <mat-card class="main-card">
+     <!-- Mostrar siempre las herramientas, pero desactivadas si no hay imagen -->
+     <app-dicom-tools
+     [imageLoaded]="imageLoaded"
+     [activeTools]="activeTools"
+     (zoomToggled)="onZoomToggled($event)"
+     (panToggled)="onPanToggled($event)"
+     (windowLevelToggled)="onWindowLevelToggled($event)"
+     (measureToggled)="onMeasureToggled($event)"
+     (resetRequested)="onResetRequested()"
+     (orientationToggled)="onOrientationToggled($event)"
+     (rotateLeftRequested)="onRotateLeftRequested()"
+     (rotateRightRequested)="onRotateRightRequested()"
+     (flipHorizontalRequested)="onFlipHorizontalRequested()"
+     (flipVerticalRequested)="onFlipVerticalRequested()"
+     (lengthMeasureRequested)="onLengthMeasureRequested()"
+     (ellipseMeasureRequested)="onEllipseMeasureRequested()"
+     (rectangleMeasureRequested)="onRectangleMeasureRequested()"
+     (circleMeasureRequested)="onCircleMeasureRequested()"
+     (clearMeasurementsRequested)="onClearMeasurementsRequested()"
+     (downloadRequested)="onDownloadRequested()">
+   </app-dicom-tools>
+    <mat-card-content>
+      <div class="uploader-container" *ngIf="!imageLoaded">
+        <app-dicom-uploader 
+          (fileSelected)="processFile($event)"
+          [fileError]="fileError">
+        </app-dicom-uploader>
+      </div>
+      
+      <div class="viewer-container" *ngIf="imageLoaded">
+        <mat-card class="image-card">
+          <app-dicom-viewer 
+            [imageId]="currentImageId" 
+            [activeToolNames]="activeToolNames"
+            (toolsChanged)="onToolsChanged($event)">
+          </app-dicom-viewer>
+        </mat-card>
+        
+        <mat-tab-group *ngIf="metadata.length > 0">
+          <mat-tab label="Metadatos">
+            <app-dicom-metadata [metadata]="metadata"></app-dicom-metadata>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
