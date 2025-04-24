@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-
+import { ModuloVisualizadorComponent } from './features/features/visualizador/components/modulo-visualizador/modulo-visualizador.component';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [ModuloVisualizadorComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'ViSaludAppWeb-1';
+  title = 'VisaludWeb';
 }
